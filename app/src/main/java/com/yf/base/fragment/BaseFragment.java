@@ -103,6 +103,18 @@ public abstract class BaseFragment extends Fragment {
         }
     }
 
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        if (isAttachedToActivity() && getUserVisibleHint() != isVisibleToUser) {
+            visibleChanged(isVisibleToUser);
+        }
+        super.setUserVisibleHint(isVisibleToUser);
+    }
+
+    protected void visibleChanged(boolean isVisibleToUser){
+
+    }
+
     /**
      * simulate the behavior of startActivityForResult/onActivityResult:
      * 1. Jump fragment1 to fragment2 via startActivityForResult(fragment2, requestCode)
